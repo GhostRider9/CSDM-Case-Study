@@ -43,7 +43,8 @@ def load_data():
 
 df_supply, actual_build, df_demand, df_channels = load_data()
 
-# Sidebar: Protect PAC in Jan Wk4?
+# Sidebar: Protect PAC in Jan Wk4 options
+st.sidebar.header(f"Channel Protection Option")
 protect_pac = st.sidebar.checkbox("Protect PAC Reseller Partner in Jan Wk4", value=True)
 
 # Compute remaining supply after prioritizing Superman/Superman Mini
@@ -55,8 +56,8 @@ df_allocation['Gap'] = df_allocation['Remaining_For_SupermanPlus'] - df_demand['
 # Display Remaining Supply
 st.subheader("📦 Remaining Supply Available for Superman Plus")
 st.markdown("""
-Prioritized_Demand: Superman + Superman Mini Demand
-GAP: Remaining_For_SupermanPlus - Superman_Plus demand""")
+* `Prioritized_Demand`: Superman + Superman Mini Demand
+* `GAP`: Remaining_For_SupermanPlus - Superman_Plus demand""")
 st.dataframe(df_allocation[['Week', 'Total_Cum_Supply', 'Prioritized_Demand', 'Remaining_For_SupermanPlus', 'Gap']])
 
 # Visualization: Supply vs Demand
